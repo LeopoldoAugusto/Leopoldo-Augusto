@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Currículo Interativo - Leopoldo Augusto Hauela</title>
+  <link rel="stylesheet" href="styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+</head>
+<body>
+  <!-- Área de Login do Administrador -->
+  <div id="login-section" class="container login-section">
+    <h2><i class="fas fa-user-lock"></i> Área do Administrador</h2>
+    <form id="login-form">
+      <label for="admin-password">Senha:</label>
+      <input type="password" id="admin-password" placeholder="Digite a senha">
+      <button type="button" onclick="loginAdmin()">Iniciar Sessão</button>
+    </form>
+    <button id="logout-button" style="display:none;" onclick="logoutAdmin()">Sair</button>
+  </div>
+
+  <!-- Cabeçalho -->
+  <header>
+    <div class="container">
+      <h1><i class="fas fa-bolt"></i> Leopoldo Augusto Hauela</h1>
+      <p class="subtitle">Engenheiro Electrotécnico</p>
+    </div>
+  </header>
+
+  <!-- Foto de Perfil -->
+  <div class="container profile-section">
+    <div class="profile-pic"></div>
+  </div>
+
+  <!-- Barra de navegação -->
+  <nav class="tabs">
+    <button class="tab-button active" onclick="openTab('dados')"><i class="fas fa-user"></i> Dados Pessoais</button>
+    <button class="tab-button" onclick="openTab('formacao')"><i class="fas fa-graduation-cap"></i> Formação</button>
+    <button class="tab-button" onclick="openTab('certificacoes')"><i class="fas fa-certificate"></i> Certificações</button>
+    <button class="tab-button" onclick="openTab('expProf')"><i class="fas fa-tools"></i> Experiência</button>
+    <button class="tab-button" onclick="openTab('estagio')"><i class="fas fa-wrench"></i> Estágios</button>
+    <button class="tab-button" onclick="openTab('habilidades')"><i class="fas fa-lightbulb"></i> Habilidades</button>
+    <button class="tab-button" onclick="openTab('idiomas')"><i class="fas fa-language"></i> Idiomas</button>
+    <button class="tab-button" onclick="openTab('referencias')"><i class="fas fa-address-book"></i> Referências</button>
+    <button class="tab-button" onclick="openTab('galeria')"><i class="fas fa-images"></i> Galeria</button>
+    <button class="tab-button" onclick="openTab('documentos')"><i class="fas fa-file-alt"></i> Documentos</button>
+  </nav>
+
+  <!-- Conteúdo principal -->
+  <main class="container cv-content">
+    <!-- Seção Dados Pessoais -->
+    <section id="dados" class="tab-content active">
+      <div class="section-header">
+        <h2><i class="fas fa-user"></i> Dados Pessoais</h2>
+        <div class="admin-only">
+          <button onclick="toggleEditSection('dados')">Editar</button>
+        </div>
+      </div>
+      <div class="content" id="dados-content">
+        <p><strong>Nome Completo:</strong> Leopoldo Augusto Hauela</p>
+        <p><strong>Data de Nascimento:</strong> 15 de Fevereiro de 2000</p>
+        <p><strong>Naturalidade:</strong> Província de Niassa, Distrito de Lichinga</p>
+        <p><strong>Nacionalidade:</strong> Moçambicano</p>
+        <p><strong>Estado Civil:</strong> Solteiro</p>
+        <p><strong>Filiação:</strong> Augusto Hauela e Lurdes Luísa Martinho</p>
+        <p><strong>B.I:</strong> 010104176292B</p>
+        <p><strong>NUIT:</strong> 143046354</p>
+        <button onclick="downloadCV()" class="download-btn">Download CV (PDF)</button>
+      </div>
+    </section>
+
+    <!-- Seção Formação Acadêmica -->
+    <section id="formacao" class="tab-content" style="display:none">
+      <div class="section-header">
+        <h2><i class="fas fa-graduation-cap"></i> Formação Acadêmica</h2>
+      </div>
+      <div class="content" id="formacao-content">
+        <h3>Licenciatura em Engenharia Electrotécnica</h3>
+        <p>Universidade Católica de Moçambique – Chimoio (2019 – 2025)</p>
+        <div class="admin-only">
+          <label for="upload-licenciatura">Upload do documento (PDF, PPT, DOC):</label>
+          <input type="file" id="upload-licenciatura" accept=".pdf,.ppt,.pptx,.doc,.docx" onchange="uploadFile('upload-licenciatura', 'licenciatura-uploaded')">
+        </div>
+        <div id="licenciatura-uploaded"></div>
+        
+        <h3>Nível Médio em Sistemas Elétricos Industriais</h3>
+        <p>Instituto Médio de Informática e Gestão - Gurué (2016 – 2018)</p>
+        <div class="admin-only">
+          <label for="upload-medio">Upload do documento (PDF, PPT, DOC):</label>
+          <input type="file" id="upload-medio" accept=".pdf,.ppt,.pptx,.doc,.docx" onchange="uploadFile('upload-medio', 'medio-uploaded')">
+        </div>
+        <div id="medio-uploaded"></div>
+        
+        <h3>Nível Básico em Electricidade Geral</h3>
+        <p>Instituto Industrial e Comercial Ngungunhane – Lichinga (2013 – 2015)</p>
+        <div class="admin-only">
+          <label for="upload-basico">Upload do documento (PDF, PPT, DOC):</label>
+          <input type="file" id="upload-basico" accept=".pdf,.ppt,.pptx,.doc,.docx" onchange="uploadFile('upload-basico', 'basico-uploaded')">
+        </div>
+        <div id="basico-uploaded"></div>
+      </div>
+    </section>
+
+    <!-- Seção Certificações e Cursos -->
+    <section id="certificacoes" class="tab-content" style="display:none">
+      <div class="section-header">
+        <h2><i class="fas fa-certificate"></i> Certificações e Cursos</h2>
+      </div>
+      <div class="content" id="certificacoes-content">
+        <h3>Carta de Condução – Categoria C1</h3>
+        <p>Escola de Condução do Planalto | Chimoio (2024)</p>
+        <div class="admin-only">
+          <label for="upload-carta">Upload do certificado (PDF, PPT, DOC):</label>
+          <input type="file" id="upload-carta" accept=".pdf,.ppt,.pptx,.doc,.docx" onchange="uploadFile('upload-carta', 'carta-uploaded')">
+        </div>
+        <div id="carta-uploaded"></div>
+        
+        <h3>MV Substation – Uma Abordagem Industrial</h3>
+        <p>L&T Edu Tech | Coursera (2023)</p>
+        <div class="admin-only">
+          <label for="upload-mv">Upload do certificado (PDF, PPT, DOC):</label>
+          <input type="file" id="upload-mv" accept=".pdf,.ppt,.pptx,.doc,.docx" onchange="uploadFile('upload-mv', 'mv-uploaded')">
+        </div>
+        <div id="mv-uploaded"></div>
+        
+        <h3>Distribuição de Energia Eléctrica</h3>
+        <p>L&T Edu Tech | Coursera (2023)</p>
+        <div class="admin-only">
+          <label for="upload-distribuicao">Upload do certificado (PDF, PPT, DOC):</label>
+          <input type="file" id="upload-distribuicao" accept=".pdf,.ppt,.pptx,.doc,.docx" onchange="uploadFile('upload-distribuicao', 'distribuicao-uploaded')">
+        </div>
+        <div id="distribuicao-uploaded"></div>
+        
+        <h3>Introdução a Computadores e Softwares de Produtividade</h3>
+        <p>Universidade de Ciência e Tecnologia de Hong Kong | Coursera (2023)</p>
+        <div class="admin-only">
+          <label for="upload-computadores">Upload do certificado (PDF, PPT, DOC):</label>
+          <input type="file" id="upload-computadores" accept=".pdf,.ppt,.pptx,.doc,.docx" onchange="uploadFile('upload-computadores', 'computadores-uploaded')">
+        </div>
+        <div id="computadores-uploaded"></div>
+        
+        <h3>Competências Pessoais Aplicadas</h3>
+        <p>Field Read Moçambique (2023)</p>
+        <div class="admin-only">
+          <label for="upload-competencias">Upload do certificado (PDF, PPT, DOC):</label>
+          <input type="file" id="upload-competencias" accept=".pdf,.ppt,.pptx,.doc,.docx" onchange="uploadFile('upload-competencias', 'competencias-uploaded')">
+        </div>
+        <div id="competencias-uploaded"></div>
+        
+        <h3>Literacia Financeira</h3>
+        <p>Field Read Moçambique (2023)</p>
+        <div class="admin-only">
+          <label for="upload-literacia">Upload do certificado (PDF, PPT, DOC):</label>
+          <input type="file" id="upload-literacia" accept=".pdf,.ppt,.pptx,.doc,.docx" onchange="uploadFile('upload-literacia', 'literacia-uploaded')">
+        </div>
+        <div id="literacia-uploaded"></div>
+        
+        <h3>Higiene e Segurança no Trabalho</h3>
+        <p>Wake UP | Maputo (2022)</p>
+        <div class="admin-only">
+          <label for="upload-higiene">Upload do certificado (PDF, PPT, DOC):</label>
+          <input type="file" id="upload-higiene" accept=".pdf,.ppt,.pptx,.doc,.docx" onchange="uploadFile('upload-higiene', 'higiene-uploaded')">
+        </div>
+        <div id="higiene-uploaded"></div>
+      </div>
+    </section>
+
+    <!-- Seção Experiência Profissional -->
+    <section id="expProf" class="tab-content" style="display:none">
+      <div class="section-header">
+        <h2><i class="fas fa-tools"></i> Experiência Profissional</h2>
+        <div class="admin-only">
+          <button onclick="toggleEditSection('expProf')">Editar</button>
+          <button onclick="adicionarNovoItem('expProf')">Adicionar Novo</button>
+        </div>
+      </div>
+      <div class="content" id="expProf-content">
+        <h3>Técnico de Electricidade</h3>
+        <p><strong>Construções Pirâmide – Lichinga</strong></p>
+        <p><strong>Fevereiro de 2019 – Março de 2020</strong></p>
+        <ul>
+          <li>Realizou instalações elétricas em projetos de construção civil, garantindo conformidade com as normas de segurança.</li>
+          <li>Executou manutenção preventiva e corretiva em sistemas elétricos, assegurando a continuidade operacional.</li>
+          <li>Colaborou com equipes multidisciplinares para a conclusão eficiente de projetos dentro dos prazos estabelecidos.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Seção Estágios -->
+    <section id="estagio" class="tab-content" style="display:none">
+      <div class="section-header">
+        <h2><i class="fas fa-wrench"></i> Estágios</h2>
+        <div class="admin-only">
+          <button onclick="toggleEditSection('estagio')">Editar</button>
+          <button onclick="adicionarNovoItem('estagio')">Adicionar Novo</button>
+        </div>
+      </div>
+      <div class="content" id="estagio-content">
+        <h3>Estágio Profissional – Departamento de Subestações</h3>
+        <p><strong>EDM, E.P | Divisão de Transporte Centro (DTCE) – 2023</strong></p>
+        <ul>
+          <li>Auxiliou na operação e manutenção das subestações elétricas de Chimoio 1 e 2, contribuindo para a estabilidade da rede de distribuição.</li>
+          <li>Participou de inspeções, diagnósticos e reparos em equipamentos de alta tensão, aprimorando habilidades técnicas específicas.</li>
+        </ul>
+        <h3>Estágio Curricular – Manutenção de Redes</h3>
+        <p><strong>EDM, E.P | Área de Serviço ao Cliente de Lichinga (ASC) – 2022</strong></p>
+        <ul>
+          <li>Auxiliou na manutenção de redes elétricas de distribuição em MT e BT, garantindo a qualidade do fornecimento de energia aos clientes.</li>
+          <li>Auxiliou nas inspeções regulares para identificar e corrigir falhas, melhorando a eficiência do sistema elétrico de distribuição.</li>
+        </ul>
+        <h3>Estágio Profissional – Manutenção de Redes</h3>
+        <p><strong>EDM, E.P | Área de Serviço ao Cliente de Lichinga (ASC) – 2018</strong></p>
+        <ul>
+          <li>Participou de atividades de manutenção preventiva e corretiva em redes de distribuição de MT e BT.</li>
+          <li>Desenvolveu competências em identificação de falhas e implementação de soluções técnicas eficazes nas redes de MT e BT.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Seção Habilidades e Aptidões -->
+    <section id="habilidades" class="tab-content" style="display:none">
+      <div class="section-header">
+        <h2><i class="fas fa-lightbulb"></i> Habilidades e Aptidões</h2>
+        <div class="admin-only">
+          <button onclick="toggleEditSection('habilidades')">Editar</button>
+          <button onclick="adicionarNovoItem('habilidades')">Adicionar Novo</button>
+        </div>
+      </div>
+      <div class="content" id="habilidades-content">
+        <ul>
+          <li>Aprendizado contínuo</li>
+          <li>Dinamismo</li>
+          <li>Disponibilidade imediata para trabalhar em qualquer local do país</li>
+          <li>Facilidade de comunicação</li>
+          <li>Sentido de responsabilidade</li>
+          <li>Trabalho individual e em equipe</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Seção Idiomas -->
+    <section id="idiomas" class="tab-content" style="display:none">
+      <div class="section-header">
+        <h2><i class="fas fa-language"></i> Idiomas</h2>
+        <div class="admin-only">
+          <button onclick="toggleEditSection('idiomas')">Editar</button>
+          <button onclick="adicionarNovoItem('idiomas')">Adicionar Novo</button>
+        </div>
+      </div>
+      <div class="content" id="idiomas-content">
+        <ul>
+          <li>Português: Fluente</li>
+          <li>Inglês: Intermediário</li>
+          <li>Yao: Fluente</li>
+          <li>Macua: Básico</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Seção Referências -->
+    <section id="referencias" class="tab-content" style="display:none">
+      <div class="section-header">
+        <h2><i class="fas fa-address-book"></i> Referências</h2>
+        <div class="admin-only">
+          <button onclick="toggleEditSection('referencias')">Editar</button>
+          <button onclick="adicionarNovoItem('referencias')">Adicionar Novo</button>
+        </div>
+      </div>
+      <div class="content" id="referencias-content">
+        <p><strong>Eng. Francisco João</strong></p>
+        <p>Supervisor da Subestação de Chimoio 1 e 2</p>
+        <p>Contacto: +258 874629252</p>
+      </div>
+    </section>
+
+    <!-- Seção Galeria -->
+    <section id="galeria" class="tab-content" style="display:none">
+      <div class="section-header">
+        <h2><i class="fas fa-images"></i> Galeria</h2>
+      </div>
+      <div class="admin-only gallery-upload">
+        <h3>Adicionar à Galeria</h3>
+        <label for="gallery-photo">Foto:</label>
+        <input type="file" id="gallery-photo" accept="image/*">
+        <label for="gallery-message">Mensagem:</label>
+        <textarea id="gallery-message" placeholder="Digite uma mensagem"></textarea>
+        <button onclick="addToGallery()">Adicionar</button>
+      </div>
+      <div class="gallery-grid" id="gallery-content"></div>
+    </section>
+
+    <!-- Seção Documentos -->
+    <section id="documentos" class="tab-content" style="display:none">
+      <div class="section-header">
+        <h2><i class="fas fa-file-alt"></i> Documentos</h2>
+      </div>
+      <div class="admin-only documents-upload">
+        <h3>Adicionar Documento</h3>
+        <label for="document-file">Documento (PDF, DOC, etc.):</label>
+        <input type="file" id="document-file" accept=".pdf,.doc,.docx">
+        <label for="document-name">Nome do Documento:</label>
+        <input type="text" id="document-name" placeholder="Ex.: TCC - Engenharia Electrotécnica">
+        <button onclick="addDocument()">Adicionar</button>
+      </div>
+      <div class="documents-grid" id="documents-content"></div>
+    </section>
+  </main>
+
+  <!-- Rodapé com informações de contato e endereço -->
+  <footer class="container footer">
+    <p><strong><i class="fas fa-map-marker-alt"></i> Endereço:</strong> Província de Niassa, Cidade de Lichinga, Bairro Nzinje</p>
+    <p><strong><i class="fas fa-phone"></i> Telefone:</strong> +258 847893039 / +258 849101518</p>
+    <p><strong><i class="fas fa-envelope"></i> E-mail:</strong> leopoldo.augusto52@gmail.com</p>
+    <p><strong><i class="fab fa-linkedin"></i> LinkedIn:</strong> <a href="https://www.linkedin.com/in/leopoldo-hauela" target="_blank">linkedin.com/in/leopoldo-hauela</a></p>
+  </footer>
+
+  <script src="scripts.js"></script>
+</body>
+</html>

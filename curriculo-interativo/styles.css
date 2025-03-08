@@ -1,0 +1,394 @@
+/* Estilos Gerais */
+body {
+    font-family: 'Roboto', sans-serif;
+    background: linear-gradient(135deg, #e6ecef, #d1d9e6); /* Gradiente técnico */
+    color: #2c3e50;
+    margin: 0;
+    line-height: 1.6;
+  }
+  
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  /* Cabeçalho */
+  header {
+    background: url('path/to/your/image.jpg') no-repeat center center/cover; /* Substitua pelo caminho da imagem */
+    color: #fff;
+    padding: 60px 0;
+    text-align: center;
+    position: relative;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  }
+  
+  header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* Escurece a imagem de fundo */
+  }
+  
+  header .container {
+    position: relative;
+    z-index: 1;
+  }
+  
+  header h1 {
+    margin: 0;
+    font-size: 2.5em;
+  }
+  
+  header .subtitle {
+    font-size: 1.2em;
+    margin-top: 5px;
+    color: #bdc3c7;
+  }
+  
+  /* Foto de Perfil */
+  .profile-section {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 30px;
+  }
+  
+  .profile-pic {
+    width: 150px;
+    height: 150px;
+    background: url('path/to/your/image.jpg') no-repeat center center/cover; /* Substitua pelo caminho da imagem */
+    border-radius: 50%;
+    border: 4px solid #3498db;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* Área de Login */
+  .login-section {
+    background: #34495e; /* Tom mais escuro */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    margin-bottom: 30px;
+    color: #fff;
+    text-align: center;
+  }
+  
+  .login-section h2 {
+    margin-bottom: 15px;
+  }
+  
+  .login-section form {
+    display: inline-block;
+    text-align: left;
+  }
+  
+  .login-section label {
+    display: block;
+    margin-bottom: 5px;
+    color: #bdc3c7;
+  }
+  
+  .login-section input[type="password"] {
+    padding: 10px;
+    width: 220px;
+    margin-bottom: 15px;
+    border: 1px solid #7f8c8d;
+    border-radius: 5px;
+    background: #ecf0f1;
+  }
+  
+  .login-section button, #logout-button {
+    padding: 10px 20px;
+    background: #3498db; /* Azul vibrante */
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+  }
+  
+  .login-section button:hover, #logout-button:hover {
+    background: #2980b9;
+  }
+  
+  /* Barra de Abas */
+  .tabs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    padding: 20px;
+    background: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 30px;
+    border-radius: 8px;
+  }
+  
+  .tab-button {
+    padding: 12px 25px;
+    border: none;
+    background: #3498db;
+    color: #fff;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s;
+    font-weight: 700;
+  }
+  
+  .tab-button:hover {
+    background: #2980b9;
+    transform: translateY(-2px);
+  }
+  
+  .tab-button.active {
+    background: #2c3e50;
+    transform: none;
+  }
+  
+  .tab-button i {
+    margin-right: 8px;
+  }
+  
+  /* Seções */
+  .tab-content {
+    background: #fff;
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 30px;
+  }
+  
+  .section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #3498db;
+    padding-bottom: 10px;
+  }
+  
+  .section-header h2 {
+    margin: 0;
+    font-size: 1.8em;
+    color: #2c3e50;
+  }
+  
+  .section-header h2 i {
+    margin-right: 10px;
+    color: #3498db;
+  }
+  
+  .content h3 {
+    color: #3498db;
+    font-size: 1.4em;
+    margin-top: 20px;
+  }
+  
+  .content p, .content ul {
+    margin: 10px 0;
+  }
+  
+  .content ul {
+    list-style-type: none;
+    padding-left: 20px;
+  }
+  
+  .content ul li:before {
+    content: "\f0c8"; /* Ícone de quadrado da FontAwesome */
+    font-family: "Font Awesome 5 Free";
+    color: #3498db;
+    margin-right: 10px;
+  }
+  
+  /* Botão de Download */
+  .download-btn {
+    padding: 10px 20px;
+    background: #2ecc71; /* Verde para download */
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    margin-top: 20px;
+  }
+  
+  .download-btn:hover {
+    background: #27ae60;
+  }
+  
+  /* Campos de Upload */
+  input[type="file"] {
+    display: block;
+    margin: 15px 0 20px;
+    padding: 8px;
+    border: 1px dashed #7f8c8d;
+    border-radius: 5px;
+  }
+  
+  input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #7f8c8d;
+    border-radius: 5px;
+  }
+  
+  /* Botões e elementos para administradores */
+  .admin-only button {
+    padding: 8px 15px;
+    background: #e67e22; /* Laranja técnico */
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+  }
+  
+  .admin-only button:hover {
+    background: #d35400;
+  }
+  
+  /* Estilo para arquivos enviados */
+  .uploaded-file {
+    margin-top: 10px;
+    color: #3498db;
+    text-decoration: none;
+  }
+  
+  .uploaded-file:hover {
+    text-decoration: underline;
+  }
+  
+  /* Galeria */
+  .gallery-upload {
+    margin-bottom: 30px;
+  }
+  
+  .gallery-upload h3 {
+    color: #2c3e50;
+    margin-bottom: 15px;
+  }
+  
+  .gallery-upload label {
+    display: block;
+    margin-bottom: 5px;
+  }
+  
+  .gallery-upload textarea {
+    width: 100%;
+    height: 80px;
+    padding: 10px;
+    border: 1px solid #7f8c8d;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    resize: vertical;
+  }
+  
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+  }
+  
+  .gallery-item {
+    background: #f9f9f9;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    text-align: center;
+  }
+  
+  .gallery-item img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 5px;
+    margin-bottom: 10px;
+  }
+  
+  .gallery-item p {
+    margin: 0;
+    font-size: 0.9em;
+    color: #2c3e50;
+  }
+  
+  /* Documentos */
+  .documents-upload {
+    margin-bottom: 30px;
+  }
+  
+  .documents-upload h3 {
+    color: #2c3e50;
+    margin-bottom: 15px;
+  }
+  
+  .documents-upload label {
+    display: block;
+    margin-bottom: 5px;
+  }
+  
+  .documents-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+  }
+  
+  .document-item {
+    background: #f9f9f9;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    text-align: center;
+  }
+  
+  .document-item a {
+    display: block;
+    margin-top: 10px;
+    color: #3498db;
+    text-decoration: none;
+  }
+  
+  .document-item a:hover {
+    text-decoration: underline;
+  }
+  
+  /* Rodapé */
+  .footer {
+    text-align: center;
+    padding: 20px;
+    background: #2c3e50;
+    color: #fff;
+    box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.2);
+    margin-top: 30px;
+    border-radius: 8px 8px 0 0;
+  }
+  
+  .footer p {
+    margin: 8px 0;
+  }
+  
+  .footer i {
+    margin-right: 8px;
+    color: #3498db;
+  }
+  
+  /* Estilos para o PDF */
+  @media print {
+    body {
+      background: #fff; /* Remove o gradiente de fundo */
+    }
+    .login-section, .tabs, .admin-only, .download-btn, .gallery-upload, .documents-upload {
+      display: none !important; /* Oculta elementos indesejados no PDF */
+    }
+    .tab-content {
+      display: block !important; /* Exibe todas as seções para o PDF */
+      box-shadow: none; /* Remove sombras que podem não renderizar bem */
+    }
+    .profile-section {
+      margin: 0 auto;
+    }
+    .footer {
+      box-shadow: none;
+    }
+  }
